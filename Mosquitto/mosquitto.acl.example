@@ -1,0 +1,58 @@
+
+# ======================================================
+# Mosquitto ACL - Arquivo de EXEMPLO
+# Caminho real esperado pelo backend:
+# /etc/mosquitto/mosquitto.acl
+#
+# ATENÇÃO:
+# Este arquivo é apenas um MODELO.
+# As regras reais são criadas e gerenciadas
+# automaticamente pelo Backend.
+# ======================================================
+
+
+# ------------------------------------------------------
+# USUÁRIOS INTERNOS (GERENCIADOS PELO BACKEND)
+# ------------------------------------------------------
+
+# Usuário do Sistema (Backend)
+# Possui acesso total para gerenciar usuários e tópicos
+#
+# user backend
+# topic readwrite #
+# topic read $SYS/#
+
+
+# Usuário do Painel Web (Monitor)
+# Acesso somente leitura para monitoramento
+#
+# user web_monitor
+# topic read #
+# topic read $SYS/#
+
+
+# ------------------------------------------------------
+# USUÁRIOS FINAIS (CRIADOS VIA API)
+# ------------------------------------------------------
+
+# Exemplo de usuário final
+#
+# user aluno01
+# topic readwrite aluno01/projeto01/#
+
+
+# Exemplo de múltiplos projetos por usuário
+#
+# user aluno01
+# topic readwrite aluno01/projeto02/#
+
+
+# ------------------------------------------------------
+# OBSERVAÇÕES IMPORTANTES
+# ------------------------------------------------------
+#
+# - Não edite este arquivo manualmente em produção.
+# - O backend verifica, cria e mantém as regras necessárias.
+# - Alterações manuais podem ser sobrescritas.
+#
+# Para ambientes de teste ou estudo, adapte conforme necessário.
