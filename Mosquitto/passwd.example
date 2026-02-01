@@ -1,1 +1,16 @@
-
+# ======================================================
+# Arquivo de senhas do Mosquitto (EXEMPLO)
+# Caminho real esperado pelo backend:
+# /etc/mosquitto/passwd
+#
+# ⚠️ATENÇÃO:
+# Este arquivo deve existir, mesmo vazio.
+# O backend é responsável por:
+# - verificar se o arquivo existe
+# - verificar se os usuários necessários existem
+# - criar os usuários automaticamente, se necessário
+#
+# Usuários gerenciados pelo backend:
+# - backend
+# - web_monitor
+# ======================================================
