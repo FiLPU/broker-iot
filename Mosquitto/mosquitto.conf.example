@@ -1,1 +1,47 @@
+# ======================================================
+# Mosquitto - Arquivo de configuração (EXEMPLO)
+# Caminho real esperado pelo backend:
+# /etc/mosquitto/mosquitto.conf
+#
+# ATENÇÃO:
+# Este arquivo é apenas um MODELO.
+# Copie, renomeie e ajuste conforme seu ambiente.
+# ======================================================
 
+# --- Porta para Microcontroladores (ESP32, Python, etc) ---
+listener 1883
+protocol mqtt
+
+# --- Porta para Navegador Web (WebSockets) ---
+listener 9001
+protocol websockets
+
+# Freio/Airbag
+max_queued_messages 100
+max_inflight_messages 20
+message_size_limit 10240
+
+# Atualiza as estatísticas ($SYS) a cada 5 segundos
+sys_interval 5
+
+# --- Segurança Geral ---
+allow_anonymous false
+password_file /etc/mosquitto/passwd
+acl_file /etc/mosquitto/mosquitto.acl
+
+# === OTIMIZACAO DE LOGS (100+ DISPOSITIVOS) ===
+
+# 1. Desativa o aviso de "Novo cliente conectado / desconectado"
+# Isso economiza MUITO espaco com 100 dispositivos
+connection_messages false
+
+# 2. Define o que salvar.
+# Salvamos ERROS, AVISOS e o que o sistema falar.
+# Removemos 'information', 'notice', 'debug' e 'subscribe'.
+log_type error
+log_type warning
+# log_type notice
+# log_type information
+
+# 3. Mantem o timestamp para saber a hora do erro
+log_timestamp true
